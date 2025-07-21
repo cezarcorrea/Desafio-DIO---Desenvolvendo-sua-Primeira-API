@@ -1,0 +1,22 @@
+# Dockerfile (no mesmo diretório do docker-compose.yml)
+
+# Use uma imagem base oficial do Python
+FROM python:3.10-slim-buster
+
+# Define o diretório de trabalho dentro do contêiner
+WORKDIR /app
+
+# Copia o arquivo requirements.txt para o contêiner em /app
+COPY requirements.txt .
+
+# Instala as dependências especificadas em requirements.txt
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Copia o restante do código da sua aplicação
+COPY . .
+
+# Expõe a porta em que sua aplicação será executada
+EXPOSE 8000
+
+# Comando para rodar a aplicação
+CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]

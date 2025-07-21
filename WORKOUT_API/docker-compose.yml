@@ -1,0 +1,11 @@
+services: # <-- ATENÇÃO: Tem que ser 'services' (no plural) e sem recuo
+  db: # Nome do seu serviço de banco de dados
+    image: postgres:17
+    container_name: my_postgres_db
+    environment:
+      POSTGRES_DB: workout
+      POSTGRES_USER: myuser
+      POSTGRES_PASSWORD: Work123#
+    ports:
+      - "5433:5432"
+    
